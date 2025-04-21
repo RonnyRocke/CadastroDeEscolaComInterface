@@ -12,6 +12,6 @@
 
 <h4>Banco De Dados: </h3>
 
-<img src="https://github.com/user-attachments/assets/3261b565-23d9-4672-ba01-9c09b2baf65b" width="600" />
+<img src="https://github.com/user-attachments/assets/6c9c14ff-5a5b-4d3c-91ac-ffee87a3accd" width="600" />
 
 
