@@ -80,7 +80,7 @@
             <Font name="System Bold Italic" size="13.0" />
          </font>
       </Button>
-      <TableView fx:id="tvtabela" layoutX="-4.0" layoutY="321.0" onMouseClicked="#preencherCampos" prefHeight="151.0" prefWidth="580.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+      <TableView fx:id="tvtabela" layoutX="-4.0" layoutY="293.0" onMouseClicked="#preencherCampos" prefHeight="169.0" prefWidth="580.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="330.0">
         <columns>
           <TableColumn fx:id="tcid" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="tcnome" prefWidth="75.0" text="Nome" />
@@ -91,7 +91,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="btdeletar" layoutX="408.0" layoutY="260.0" mnemonicParsing="false" text="DELETAR">
+      <Button fx:id="btdeletar" layoutX="408.0" layoutY="260.0" mnemonicParsing="false" onAction="#deletar" text="DELETAR">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>

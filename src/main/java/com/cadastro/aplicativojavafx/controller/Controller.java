@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -158,6 +159,7 @@ public class Controller implements Initializable {
 
            btsalvar.setVisible(false);
             bteditar.setVisible(true);
+            btdeletar.setVisible(true);
 
            tfnome.setText(estudante.getNome());
            tfidade.setText(String.valueOf(estudante.getIdade()));
@@ -194,5 +196,30 @@ public class Controller implements Initializable {
             bteditar.setVisible(false);
 
         }
+    }
+
+    @FXML
+    void deletar(){
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmação");
+        alert.setHeaderText("Tem certeza que deseja deletar?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.get()==ButtonType.OK){
+
+            estudanteDao.apagar(estudante.getId());
+            prepararListaTabela();
+            limpar();
+
+            btsalvar.setVisible(true);
+            bteditar.setVisible(false);
+            btdeletar.setVisible(false);
+
+        } else{
+
+        }
+
     }
 }
