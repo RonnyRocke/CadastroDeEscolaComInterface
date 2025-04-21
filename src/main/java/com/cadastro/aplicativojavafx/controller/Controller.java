@@ -9,12 +9,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
+
+
+    @FXML
+    private Button btdeletar;
 
     @FXML
     private Button bteditar;
@@ -63,6 +68,13 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         prepararListaTabela();
+        ocultaBotoesr(); // <- chama aqui
+    }
+
+    void ocultaBotoesr(){
+        this.bteditar.setVisible(false);
+        this.btdeletar.setVisible(false);
+
     }
 
     @FXML
@@ -137,5 +149,50 @@ public class Controller implements Initializable {
         else {
             return true;
         }
+    }
+        @FXML
+        void preencherCampos(MouseEvent event){
+       estudante = (Estudante) tvtabela.getSelectionModel().getSelectedItem();
+
+       if(estudante !=null){
+
+           btsalvar.setVisible(false);
+            bteditar.setVisible(true);
+
+           tfnome.setText(estudante.getNome());
+           tfidade.setText(String.valueOf(estudante.getIdade()));
+
+           if(estudante.getSexo().equals("Masculino")){
+
+               rdmasculino.setSelected(true);
+
+           } else if(estudante.getSexo().equals("Feminino")){
+               rdfeminino.setSelected(true);
+           }
+       }
+    }
+
+    @FXML
+    void editar(){
+
+        if(validador()){
+            estudante.setNome(tfnome.getText().toString());
+            estudante.setIdade(Integer.valueOf(tfidade.getText().toString()));
+
+            if(rdmasculino.isSelected()){
+                estudante.setSexo("Masculino");
+            }
+            if(rdfeminino.isSelected()){
+                estudante.setSexo("Feminino");
+            }
+
+            estudanteDao.editar(estudante, estudante.getId());
+            prepararListaTabela();
+            limpar();
+
+            btsalvar.setVisible(true);
+            bteditar.setVisible(false);
+
         }
+    }
 }
