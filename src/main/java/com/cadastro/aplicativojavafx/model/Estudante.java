@@ -2,17 +2,17 @@ package com.cadastro.aplicativojavafx.model;
 
 public class Estudante {
 
-    private long ID;
+    private long id;
     private String nome;
     private int idade;
     private String sexo;
 
-    public long getID() {
-        return ID;
+    public long getId() {
+        return id;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNome() {

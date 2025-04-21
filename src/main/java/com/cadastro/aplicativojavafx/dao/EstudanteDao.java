@@ -12,8 +12,36 @@ import java.util.List;
 public class EstudanteDao implements EstudanteRepositorio {
 
     @Override
-    public void porId(Long id) {
+    public Estudante porId(Long id) {
 
+        Estudante estudante = null;
+
+        try{
+            String sql = "SELECT * from estudante where id=?";
+
+            PreparedStatement ps = Conexao.obterConexao().prepareStatement(sql);
+            ps.setLong(1,id);
+
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()){}
+
+            estudante = new Estudante();
+
+            estudante.setId(rs.getLong("id"));
+            estudante.setNome(rs.getString("nome"));
+            estudante.setSexo(rs.getString("sexo"));
+            estudante.setIdade(rs.getInt("idade"));
+
+
+
+        } catch(Exception e){
+
+            System.out.println("ERRO "+e.getMessage());
+        }
+
+
+        return estudante;
     }
 
     @Override
@@ -33,7 +61,7 @@ public class EstudanteDao implements EstudanteRepositorio {
 
                 Estudante estudante = new Estudante();
 
-                estudante.setID(rs.getLong("id"));
+                estudante.setId(rs.getLong("id"));
                 estudante.setNome(rs.getString("nome"));
                 estudante.setSexo(rs.getString("sexo"));
                 estudante.setIdade(rs.getInt("idade"));
@@ -69,12 +97,23 @@ public class EstudanteDao implements EstudanteRepositorio {
             System.out.println("Erro "+ e.getMessage());
         }
 
-
-
     }
 
     @Override
     public void apagar(long id) {
+
+        try{
+
+            String sql = "DELETE from estudante where id=?";
+
+            PreparedStatement ps = Conexao.obterConexao().prepareStatement(sql);
+            ps.setLong(1,id);
+            ps.execute();
+
+
+        } catch(Exception e){
+            System.out.println("Erro "+e.getMessage());
+        }
 
     }
 
