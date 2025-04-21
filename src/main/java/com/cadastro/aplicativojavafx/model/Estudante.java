@@ -4,7 +4,7 @@ public class Estudante {
 
     private long ID;
     private String nome;
-    private double idade;
+    private int idade;
     private String sexo;
 
     public long getID() {
@@ -23,11 +23,11 @@ public class Estudante {
         this.nome = nome;
     }
 
-    public double getIdade() {
+    public int getIdade() {
         return idade;
     }
 
-    public void setIdade(double idade) {
+    public void setIdade(int idade) {
         this.idade = idade;
     }
 
